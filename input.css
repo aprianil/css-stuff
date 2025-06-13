@@ -1,0 +1,165 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.card {
+  background: white;
+  position: relative;
+  border-radius: 1.5rem;
+}
+
+.card::before,
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0 0 -0.5rem 0;
+  z-index: -1;
+  background: white;
+  background-image: linear-gradient(
+    var(--gradient-angle),
+    #98ffd0,
+    #89cee8,
+    #7a9cff,
+    #89cee8,
+    #98ffd0
+  );
+  border-radius: 1.75rem;
+  animation: rotation 5s linear infinite alternate;
+}
+
+.card::after {
+  filter: blur(3.5rem);
+  animation: slide-up 0.8s ease-out;
+  opacity: 0.6;
+}
+
+@keyframes slide-up {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes rotation {
+  0% {
+    --gradient-angle: 0deg;
+  }
+  100% {
+    --gradient-angle: 180deg;
+  }
+}
+
+summary {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px 8px 0px;
+  transition: transform 0.3s ease;
+  font-weight: 300;
+}
+
+summary:hover {
+  /* background-color: #f8fafc; */
+  border-radius: 10px;
+  cursor: pointer;
+  transform: translateX(5px);
+}
+
+summary::before {
+  content: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNjYmQ1ZTEiIHN0cm9rZS13aWR0aD0iMS44IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWNpcmNsZS1kYXNoZWQtaWNvbiBsdWNpZGUtY2lyY2xlLWRhc2hlZCI+PHBhdGggZD0iTTEwLjEgMi4xODJhMTAgMTAgMCAwIDEgMy44IDAiLz48cGF0aCBkPSJNMTMuOSAyMS44MThhMTAgMTAgMCAwIDEtMy44IDAiLz48cGF0aCBkPSJNMTcuNjA5IDMuNzIxYTEwIDEwIDAgMCAxIDIuNjkgMi43Ii8+PHBhdGggZD0iTTIuMTgyIDEzLjlhMTAgMTAgMCAwIDEgMC0zLjgiLz48cGF0aCBkPSJNMjAuMjc5IDE3LjYwOWExMCAxMCAwIDAgMS0yLjcgMi42OSIvPjxwYXRoIGQ9Ik0yMS44MTggMTAuMWExMCAxMCAwIDAgMSAwIDMuOCIvPjxwYXRoIGQ9Ik0zLjcyMSA2LjM5MWExMCAxMCAwIDAgMSAyLjctMi42OSIvPjxwYXRoIGQ9Ik02LjM5MSAyMC4yNzlhMTAgMTAgMCAwIDEtMi42OS0yLjciLz48L3N2Zz4=");
+  align-items: center;
+  padding-top: 6px;
+}
+
+summary::after {
+  content: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNjYmQ1ZTEiIHN0cm9rZS13aWR0aD0iMS44IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWNoZXZyb24tZG93bi1pY29uIGx1Y2lkZS1jaGV2cm9uLWRvd24iPjxwYXRoIGQ9Im02IDkgNiA2IDYtNiIvPjwvc3ZnPg==");
+  margin-left: auto;
+  align-items: center;
+}
+
+summary::after:active {
+  content: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNjYmQ1ZTEiIHN0cm9rZS13aWR0aD0iMS44IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWNoZXZyb24tdXAtaWNvbiBsdWNpZGUtY2hldnJvbi11cCI+PHBhdGggZD0ibTE4IDE1LTYtNi02IDYiLz48L3N2Zz4=");
+}
+
+.container-main {
+  padding: 24px;
+}
+
+.container-indent {
+  padding: 16px 44px;
+  width: fit-content;
+  height: fit-content;
+  max-width: 692px;
+}
+
+.container-slate {
+  background: #f8fafc;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: fit-content;
+  width: fit-content;
+  border-radius: 16px;
+}
+
+.container-content {
+  display: flex;
+  background-color: white;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  border-radius: 8px;
+  border-top: 1px solid var(--bg-slate-50, #f8fafc);
+  border-right: 1px solid var(--bg-slate-50, #f8fafc);
+  border-bottom: 2px solid var(--bg-slate-50, #f8fafc);
+  border-left: 1px solid var(--bg-slate-50, #f8fafc);
+  background: #fff;
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.1);
+}
+
+.container-insights {
+  display: flex;
+  padding: 16px;
+  flex-direction: column;
+  gap: 8px;
+  border-color: #e2e8f0;
+  border-radius: 4px;
+  border: 1px dashed var(--bg-slate-200, #e2e8f0);
+}
+
+.container-details {
+  display: flex;
+  padding: 0px 16px 0px 32px;
+  list-style-type: disc;
+  flex-direction: column;
+  gap: 8px;
+  border-left: 2px solid var(--action-blue-600, #007aff);
+}
+
+.opening-text {
+  padding: 24px;
+  border-bottom: 1px dashed var(--bg-slate-200, #e2e8f0);
+}
+
+ul {
+  list-style-type: disc;
+  list-style-position: outside;
+}
+
+li {
+  list-style-position: outside;
+}
